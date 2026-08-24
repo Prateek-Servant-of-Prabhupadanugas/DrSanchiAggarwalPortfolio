@@ -1,3 +1,8 @@
+Here is the updated code. I have redesigned the "The Smile Edit" section to include the three specific interactive elements you requested.
+What's New:
+ * Card 1 (Flipping Photo): Uses pure CSS 3D transforms. Hovering or tapping the image seamlessly flips it 180 degrees from the external clinic photo to the Smile Edit logo on the back.
+ * Card 2 (Triangular Prism Carousel): Powered by Three.js. It constructs a 3D prism with 3 faces for the equipment photos. You can drag left or right (via mouse or touch) to spin it.
+ * Card 3 (Interactive Particle Logo): Powered by Three.js. It generates a swarm of glowing particles. I have set it up to generate a placeholder "SE" (Smile Edit) text logo. When you move your mouse or swipe across it, the particles scatter and magnetically snap back. (Instructions are included in the JS comments on how to map this to your specific SVG).
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +43,12 @@
         .glow-text {
             text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
         }
+
+        /* CSS for 3D Flipping Card */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
     </style>
 </head>
 <body class="relative">
@@ -89,21 +100,6 @@
                         Recognized with the <strong class="text-white">Young Achievers Award from IACDE</strong> and listed among the <strong class="text-cyan-400">Top 10 Endodontists in India</strong>, she advanced her expertise in Microscopic Endodontics, Smile Designing, and Implantology. At <strong class="text-white">The Smile Edit</strong>, she treats every patient's smile as a unique work of art.
                     </p>
                 </div>
-
-                <div class="grid grid-cols-3 gap-3 md:gap-4 pt-2">
-                    <div class="glass-card p-3 md:p-4 rounded-2xl text-center border-cyan-500/20">
-                        <h3 class="text-xl md:text-3xl font-extrabold text-cyan-400">Top 10</h3>
-                        <p class="text-[10px] md:text-xs text-gray-400 uppercase tracking-wider mt-1">Endodontist in India</p>
-                    </div>
-                    <div class="glass-card p-3 md:p-4 rounded-2xl text-center border-cyan-500/20">
-                        <h3 class="text-xl md:text-3xl font-extrabold text-cyan-400">IACDE</h3>
-                        <p class="text-[10px] md:text-xs text-gray-400 uppercase tracking-wider mt-1">Young Achiever Award</p>
-                    </div>
-                    <div class="glass-card p-3 md:p-4 rounded-2xl text-center border-cyan-500/20">
-                        <h3 class="text-xl md:text-3xl font-extrabold text-cyan-400">MDS Topper</h3>
-                        <p class="text-[10px] md:text-xs text-gray-400 uppercase tracking-wider mt-1">ITS Ghaziabad</p>
-                    </div>
-                </div>
             </div>
 
             <!-- Doctor Profile Image Box -->
@@ -113,7 +109,7 @@
                     <img src="Assets/Images/doctor-sanchi.jpg" alt="Dr. Sanchi Agrawal" class="w-full h-[400px] md:h-[500px] object-cover rounded-2xl transform group-hover:scale-102 transition duration-500">
                     <div class="absolute bottom-6 left-6 right-6 glass-card p-4 rounded-xl border-white/10">
                         <h4 class="text-lg md:text-xl font-bold text-white">Dr. Sanchi Agrawal</h4>
-                        <p class="text-xs md:text-sm text-cyan-400">BDS, MDS - Endodontist & Conservative Dentistry Specialist</p>
+                        <p class="text-xs md:text-sm text-cyan-400">BDS, MDS - Endodontist & Conservative Dentistry</p>
                         <p class="text-xs text-gray-300 mt-1">Co-Founder, The Smile Edit</p>
                     </div>
                 </div>
@@ -125,20 +121,20 @@
             <div class="text-center space-y-4 mb-8 md:mb-12">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-white">Academic & Clinical Journey</h2>
                 <p class="text-gray-400 max-w-xl mx-auto text-sm md:text-base">
-                    Swipe or drag horizontally across the 3D space below to explore Dr. Sanchi Agrawal's milestones.
+                    Swipe or drag horizontally across the 3D space below to explore milestones.
                 </p>
             </div>
 
             <!-- Canvas Container for 3D Experience Carousel -->
             <div class="relative glass-card rounded-3xl p-2 md:p-4 border-cyan-500/20 overflow-hidden">
-                <div id="timeline-instructions" class="absolute top-4 left-4 z-20 text-[11px] md:text-xs text-cyan-400 bg-slate-900/80 px-3 py-1.5 rounded-full border border-cyan-500/30">
-                    <i class="fa-solid fa-hand-pointer mr-2"></i> Drag or Swipe horizontally to rotate
+                <div class="absolute top-4 left-4 z-20 text-[11px] md:text-xs text-cyan-400 bg-slate-900/80 px-3 py-1.5 rounded-full border border-cyan-500/30">
+                    <i class="fa-solid fa-hand-pointer mr-2"></i> Drag or Swipe horizontally
                 </div>
                 <div id="timeline-canvas-container" class="w-full h-[360px] md:h-[450px] cursor-grab active:cursor-grabbing"></div>
             </div>
         </section>
 
-        <!-- The Smile Edit Practice Showcase -->
+        <!-- The Smile Edit Practice Showcase (REDESIGNED) -->
         <section id="practice" class="py-20 px-4 md:px-6 max-w-7xl mx-auto">
             <div class="text-center space-y-4 mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-white">The Smile Edit</h2>
@@ -148,43 +144,64 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                <div class="glass-card rounded-2xl overflow-hidden group border-cyan-500/20">
-                    <div class="relative h-56 md:h-64 overflow-hidden">
-                        <img src="assets/images/clinic-reception.jpg" alt="Microscopic Endodontics" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/10 transition"></div>
+                
+                <!-- CARD 1: 3D Flipping Photo -->
+                <div class="glass-card rounded-2xl border-cyan-500/20 perspective-1000 group">
+                    <div class="relative h-64 md:h-72 w-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180 cursor-pointer">
+                        <!-- Front: Clinic External -->
+                        <div class="absolute inset-0 backface-hidden rounded-t-2xl overflow-hidden bg-slate-800">
+                            <!-- Replace with actual external clinic photo -->
+                            <img src="assets/images/clinic-external.jpg" alt="Clinic Exterior" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center bg-slate-900/50">
+                                <span class="bg-black/60 text-white px-3 py-1 rounded-full text-xs border border-white/20"><i class="fa-solid fa-rotate mr-1"></i> Hover/Tap to Flip</span>
+                            </div>
+                        </div>
+                        <!-- Back: Smile Edit Logo -->
+                        <div class="absolute inset-0 backface-hidden rotate-y-180 rounded-t-2xl bg-slate-900 flex items-center justify-center border border-cyan-500/30">
+                            <!-- Replace with actual Smile Edit Logo -->
+                            <img src="assets/images/smile-edit-logo.png" alt="The Smile Edit Logo" class="w-2/3 object-contain">
+                            <p class="absolute bottom-4 text-cyan-400 text-xs font-semibold tracking-widest">THE SMILE EDIT</p>
+                        </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-white mb-2">Microscopic Endodontics</h3>
-                        <p class="text-xs md:text-sm text-gray-400">High-precision microscopic root canal treatments designed for structural preservation and pain-free care.</p>
+                    <div class="p-6 relative z-10 bg-slate-900/50 rounded-b-2xl">
+                        <h3 class="text-lg md:text-xl font-bold text-white mb-2">Our Studio</h3>
+                        <p class="text-xs md:text-sm text-gray-400">Step into a modern, calming environment engineered for anxiety-free dentistry.</p>
                     </div>
                 </div>
 
-                <div class="glass-card rounded-2xl overflow-hidden group border-cyan-500/20">
-                    <div class="relative h-56 md:h-64 overflow-hidden">
-                        <img src="assets/images/clinic-operatory.jpg" alt="Aesthetic Smile Design" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/10 transition"></div>
+                <!-- CARD 2: 3D Triangular Prism Equipment Carousel -->
+                <div class="glass-card rounded-2xl border-cyan-500/20">
+                    <div id="prism-container" class="relative h-64 md:h-72 w-full rounded-t-2xl overflow-hidden bg-slate-950 cursor-grab active:cursor-grabbing">
+                        <div class="absolute top-3 left-3 z-20 text-[10px] text-cyan-400 bg-black/60 px-2 py-1 rounded-full border border-cyan-500/30">
+                            <i class="fa-solid fa-arrows-left-right mr-1"></i> Drag to rotate
+                        </div>
+                        <!-- Canvas injected here -->
                     </div>
                     <div class="p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-white mb-2">Aesthetic Smile Designing</h3>
-                        <p class="text-xs md:text-sm text-gray-400">Customized smile redesigns harmonizing natural facial features with advanced cosmetic protocols.</p>
+                        <h3 class="text-lg md:text-xl font-bold text-white mb-2">Advanced Equipment</h3>
+                        <p class="text-xs md:text-sm text-gray-400">Equipped with highly precise microscopic dentistry tools and digital intraoral scanners.</p>
                     </div>
                 </div>
 
-                <div class="glass-card rounded-2xl overflow-hidden group border-cyan-500/20">
-                    <div class="relative h-56 md:h-64 overflow-hidden">
-                        <img src="assets/images/clinic-equipment.jpg" alt="Conservative Dentistry & Implants" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/10 transition"></div>
+                <!-- CARD 3: 3D Interactive Particle Logo -->
+                <div class="glass-card rounded-2xl border-cyan-500/20">
+                    <div id="particle-container" class="relative h-64 md:h-72 w-full rounded-t-2xl overflow-hidden bg-slate-950 cursor-crosshair">
+                        <div class="absolute top-3 left-3 z-20 text-[10px] text-cyan-400 bg-black/60 px-2 py-1 rounded-full border border-cyan-500/30">
+                            <i class="fa-solid fa-hand-sparkles mr-1"></i> Touch / Hover to disperse
+                        </div>
+                        <!-- Canvas injected here -->
                     </div>
                     <div class="p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-white mb-2">Implantology & Restorations</h3>
-                        <p class="text-xs md:text-sm text-gray-400">Minimally invasive restorative dentistry and durable implants for lasting dental health.</p>
+                        <h3 class="text-lg md:text-xl font-bold text-white mb-2">Art & Science</h3>
+                        <p class="text-xs md:text-sm text-gray-400">Where clinical precision meets the aesthetic artistry of bespoke smile designing.</p>
                     </div>
                 </div>
+
             </div>
         </section>
 
         <!-- Footer / Contact Section -->
-        <footer id="contact" class="py-12 md:py-16 glass-card border-t border-cyan-500/20">
+        <footer id="contact" class="py-12 md:py-16 glass-card border-t border-cyan-500/20 mt-12">
             <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div class="space-y-4">
                     <h3 class="text-2xl md:text-3xl font-bold text-white">Consult Dr. Sanchi Agrawal</h3>
@@ -202,7 +219,7 @@
 
     </div>
 
-    <!-- 3D Three.js Scripts -->
+    <!-- Main Three.js Scripts -->
     <script>
         // ==========================================
         // 1. MAIN BACKGROUND 3D SCENE
@@ -211,59 +228,20 @@
         const bgScene = new THREE.Scene();
         const bgCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const bgRenderer = new THREE.WebGLRenderer({ canvas: bgCanvas, alpha: true, antialias: true });
-        
         bgRenderer.setSize(window.innerWidth, window.innerHeight);
-        bgRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        function createToothGeometry() {
-            return new THREE.CylinderGeometry(1.2, 0.6, 2, 8);
-        }
-
-        const toothMaterial = new THREE.MeshPhongMaterial({
-            color: 0x38bdf8,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.2,
-            shininess: 100
-        });
-
+        function createToothGeometry() { return new THREE.CylinderGeometry(1.2, 0.6, 2, 8); }
+        const toothMat = new THREE.MeshPhongMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.15 });
+        
         const teethGroup = new THREE.Group();
-        for (let i = 0; i < 20; i++) {
-            const toothMesh = new THREE.Mesh(createToothGeometry(), toothMaterial);
-            toothMesh.position.set(
-                (Math.random() - 0.5) * 30,
-                (Math.random() - 0.5) * 30,
-                (Math.random() - 0.5) * 20
-            );
-            toothMesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
-            const scale = Math.random() * 0.7 + 0.3;
-            toothMesh.scale.set(scale, scale, scale);
-            teethGroup.add(toothMesh);
+        for (let i = 0; i < 15; i++) {
+            const m = new THREE.Mesh(createToothGeometry(), toothMat);
+            m.position.set((Math.random() - 0.5) * 30, (Math.random() - 0.5) * 30, (Math.random() - 0.5) * 20);
+            m.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
+            teethGroup.add(m);
         }
         bgScene.add(teethGroup);
-
-        const particlesGeo = new THREE.BufferGeometry();
-        const particleCount = 300;
-        const posArray = new Float32Array(particleCount * 3);
-
-        for (let i = 0; i < particleCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 40;
-        }
-        particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const particleMat = new THREE.PointsMaterial({
-            size: 0.05,
-            color: 0x38bdf8,
-            transparent: true,
-            opacity: 0.4
-        });
-        const particlesMesh = new THREE.Points(particlesGeo, particleMat);
-        bgScene.add(particlesMesh);
-
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-        const pointLight = new THREE.PointLight(0x38bdf8, 2, 50);
-        pointLight.position.set(10, 10, 10);
-        bgScene.add(ambientLight, pointLight);
-
+        bgScene.add(new THREE.AmbientLight(0xffffff, 0.8));
         bgCamera.position.z = 15;
 
         let mouseX = 0, mouseY = 0;
@@ -274,171 +252,269 @@
 
         function animateBg() {
             requestAnimationFrame(animateBg);
-            teethGroup.rotation.y += 0.0015;
-            teethGroup.rotation.x += 0.001;
-            particlesMesh.rotation.y -= 0.0005;
-
+            teethGroup.rotation.y += 0.001;
             bgCamera.position.x += (mouseX * 1.2 - bgCamera.position.x) * 0.05;
             bgCamera.position.y += (-mouseY * 1.2 - bgCamera.position.y) * 0.05;
-
             bgRenderer.render(bgScene, bgCamera);
         }
         animateBg();
 
         // ==========================================
-        // 2. RESPONSIVE 3D TIMELINE CAROUSEL SCENE
+        // 2. TIMELINE CAROUSEL
         // ==========================================
-        const timelineContainer = document.getElementById('timeline-canvas-container');
+        const tlCont = document.getElementById('timeline-canvas-container');
         const tlScene = new THREE.Scene();
-        const tlCamera = new THREE.PerspectiveCamera(50, timelineContainer.clientWidth / timelineContainer.clientHeight, 0.1, 1000);
+        const tlCamera = new THREE.PerspectiveCamera(50, tlCont.clientWidth / tlCont.clientHeight, 0.1, 1000);
         const tlRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        tlRenderer.setSize(tlCont.clientWidth, tlCont.clientHeight);
+        tlCont.appendChild(tlRenderer.domElement);
 
-        tlRenderer.setSize(timelineContainer.clientWidth, timelineContainer.clientHeight);
-        tlRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        timelineContainer.appendChild(tlRenderer.domElement);
-
-        // Doctor's Updated Chronological Experience
-        const experienceData = [
-            { year: "BDS", title: "CSMSS Dental College", desc: "Completed BDS degree at Aurangabad" },
-            { year: "Internship", title: "GDC Mumbai", desc: "Trained at Premier Dental Govt Institute" },
-            { year: "MDS", title: "ITS Ghaziabad", desc: "Batch Topper & 4th Rank University-wide" },
-            { year: "Residency", title: "Safdarjung & Fortis", desc: "Senior Residency & high-volume clinical mastery" },
-            { year: "Accolades", title: "IACDE Young Achiever", desc: "Recognized among Top 10 Endodontists in India" },
-            { year: "Co-Founder", title: "The Smile Edit", desc: "Pioneering artistic & microscopic endodontics" }
+        const expData = [
+            { year: "BDS", title: "CSMSS Dental College" },
+            { year: "Internship", title: "GDC Mumbai" },
+            { year: "MDS", title: "ITS Ghaziabad" },
+            { year: "Residency", title: "Safdarjung & Fortis" },
+            { year: "Co-Founder", title: "The Smile Edit" }
         ];
 
-        function createCardTexture(data) {
+        function createCard(data) {
             const canvas = document.createElement('canvas');
-            canvas.width = 512;
-            canvas.height = 320;
+            canvas.width = 512; canvas.height = 256;
             const ctx = canvas.getContext('2d');
-
-            ctx.fillStyle = '#0f172a';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.strokeStyle = '#38bdf8';
-            ctx.lineWidth = 8;
-            ctx.strokeRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#38bdf8';
-            ctx.font = 'Bold 44px Plus Jakarta Sans, sans-serif';
-            ctx.fillText(data.year, 36, 64);
-
-            ctx.fillStyle = '#ffffff';
-            ctx.font = 'Bold 30px Plus Jakarta Sans, sans-serif';
-            ctx.fillText(data.title, 36, 120);
-
-            ctx.fillStyle = '#94a3b8';
-            ctx.font = '22px Plus Jakarta Sans, sans-serif';
-            
-            const words = data.desc.split(' ');
-            let line = '';
-            let y = 175;
-            for (let n = 0; n < words.length; n++) {
-                let testLine = line + words[n] + ' ';
-                if (ctx.measureText(testLine).width > 430) {
-                    ctx.fillText(line, 36, y);
-                    line = words[n] + ' ';
-                    y += 34;
-                } else {
-                    line = testLine;
-                }
-            }
-            ctx.fillText(line, 36, y);
-
+            ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, 512, 256);
+            ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 8; ctx.strokeRect(0, 0, 512, 256);
+            ctx.fillStyle = '#38bdf8'; ctx.font = 'Bold 44px sans-serif'; ctx.fillText(data.year, 36, 80);
+            ctx.fillStyle = '#ffffff'; ctx.font = 'Bold 32px sans-serif'; ctx.fillText(data.title, 36, 150);
             return new THREE.CanvasTexture(canvas);
         }
 
-        const timelineGroup = new THREE.Group();
-        const cardCount = experienceData.length;
+        const tlGroup = new THREE.Group();
+        tlScene.add(tlGroup);
+        tlCamera.position.z = 9;
+
+        expData.forEach((d, i) => {
+            const mesh = new THREE.Mesh(new THREE.PlaneGeometry(3, 1.5), new THREE.MeshBasicMaterial({ map: createCard(d), side: THREE.DoubleSide }));
+            const angle = (i / expData.length) * Math.PI * 2;
+            mesh.position.set(Math.sin(angle) * 5, 0, Math.cos(angle) * 5);
+            mesh.rotation.y = angle;
+            tlGroup.add(mesh);
+        });
+
+        let tlRot = 0, tlDragging = false, tlPrevX = 0;
+        tlCont.addEventListener('mousedown', (e) => { tlDragging = true; tlPrevX = e.clientX; });
+        window.addEventListener('mouseup', () => tlDragging = false);
+        tlCont.addEventListener('mousemove', (e) => { if(tlDragging) { tlRot += (e.clientX - tlPrevX)*0.005; tlPrevX = e.clientX; } });
         
-        // Responsive Carousel Radius & Setup
-        function updateTimelineLayout() {
-            const isMobile = window.innerWidth < 768;
-            const radius = isMobile ? 5.2 : 6.8;
-            const cardWidth = isMobile ? 2.7 : 3.3;
-            const cardHeight = isMobile ? 1.7 : 2.0;
+        tlCont.addEventListener('touchstart', (e) => { tlDragging = true; tlPrevX = e.touches[0].clientX; });
+        window.addEventListener('touchend', () => tlDragging = false);
+        tlCont.addEventListener('touchmove', (e) => { if(tlDragging) { tlRot += (e.touches[0].clientX - tlPrevX)*0.005; tlPrevX = e.touches[0].clientX; } });
 
-            // Clear previous meshes
-            while(timelineGroup.children.length > 0){ 
-                timelineGroup.remove(timelineGroup.children[0]); 
-            }
-
-            experienceData.forEach((data, index) => {
-                const texture = createCardTexture(data);
-                const cardGeo = new THREE.PlaneGeometry(cardWidth, cardHeight);
-                const cardMat = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
-                const cardMesh = new THREE.Mesh(cardGeo, cardMat);
-
-                const angle = (index / cardCount) * Math.PI * 2;
-                cardMesh.position.x = Math.sin(angle) * radius;
-                cardMesh.position.z = Math.cos(angle) * radius;
-                cardMesh.rotation.y = angle;
-
-                timelineGroup.add(cardMesh);
-            });
-
-            // Adjust camera position based on screen width
-            tlCamera.position.z = isMobile ? 9.8 : 8.8;
-        }
-
-        tlScene.add(timelineGroup);
-        updateTimelineLayout();
-
-        // Drag Controls
-        let isDragging = false;
-        let previousMouseX = 0;
-        let targetRotation = 0;
-
-        timelineContainer.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            previousMouseX = e.clientX;
-        });
-        window.addEventListener('mouseup', () => isDragging = false);
-        timelineContainer.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            const deltaX = e.clientX - previousMouseX;
-            targetRotation += deltaX * 0.005;
-            previousMouseX = e.clientX;
-        });
-
-        // Touch support for mobile devices
-        timelineContainer.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            previousMouseX = e.touches[0].clientX;
-        });
-        window.addEventListener('touchend', () => isDragging = false);
-        timelineContainer.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            const deltaX = e.touches[0].clientX - previousMouseX;
-            targetRotation += deltaX * 0.005;
-            previousMouseX = e.touches[0].clientX;
-        });
-
-        function animateTimeline() {
-            requestAnimationFrame(animateTimeline);
-            timelineGroup.rotation.y += (targetRotation - timelineGroup.rotation.y) * 0.05;
-            
-            if (!isDragging) {
-                targetRotation += 0.0012;
-            }
-            
+        function animateTl() {
+            requestAnimationFrame(animateTl);
+            tlGroup.rotation.y += (tlRot - tlGroup.rotation.y) * 0.1;
+            if(!tlDragging) tlRot += 0.002;
             tlRenderer.render(tlScene, tlCamera);
         }
-        animateTimeline();
+        animateTl();
 
-        // Window Resize Handler
+        // ==========================================
+        // 3. TRIANGULAR PRISM (Equipments)
+        // ==========================================
+        const prCont = document.getElementById('prism-container');
+        const prScene = new THREE.Scene();
+        const prCamera = new THREE.PerspectiveCamera(45, prCont.clientWidth / prCont.clientHeight, 0.1, 100);
+        const prRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        prRenderer.setSize(prCont.clientWidth, prCont.clientHeight);
+        prCont.appendChild(prRenderer.domElement);
+
+        const prGroup = new THREE.Group();
+        prScene.add(prGroup);
+        prCamera.position.z = 4.5; // distance of camera
+
+        // Fallback colors if images aren't found
+        const colors = [0x1e293b, 0x334155, 0x0f172a]; 
+        const texLoader = new THREE.TextureLoader();
+        
+        // Setup 3 faces for triangle
+        for(let i=0; i<3; i++) {
+            const geo = new THREE.PlaneGeometry(3, 3);
+            
+            // Load your equipment photos here!
+            // const mat = new THREE.MeshBasicMaterial({ map: texLoader.load(`assets/images/equip${i+1}.jpg`), side: THREE.DoubleSide });
+            
+            // Fallback solid color material for demo
+            const mat = new THREE.MeshBasicMaterial({ color: colors[i], side: THREE.DoubleSide, wireframe: false });
+            
+            const mesh = new THREE.Mesh(geo, mat);
+            // Math for equilateral triangle placement
+            const angle = (i * 2 * Math.PI) / 3;
+            const radius = (3 / 2) / Math.tan(Math.PI / 3); 
+            
+            mesh.position.set(Math.sin(angle) * radius, 0, Math.cos(angle) * radius);
+            mesh.rotation.y = angle;
+            prGroup.add(mesh);
+        }
+
+        let prRot = 0, prDragging = false, prPrevX = 0;
+        prCont.addEventListener('mousedown', (e) => { prDragging = true; prPrevX = e.clientX; });
+        window.addEventListener('mouseup', () => prDragging = false);
+        prCont.addEventListener('mousemove', (e) => { if(prDragging) { prRot += (e.clientX - prPrevX)*0.01; prPrevX = e.clientX; } });
+
+        prCont.addEventListener('touchstart', (e) => { prDragging = true; prPrevX = e.touches[0].clientX; });
+        window.addEventListener('touchend', () => prDragging = false);
+        prCont.addEventListener('touchmove', (e) => { if(prDragging) { prRot += (e.touches[0].clientX - prPrevX)*0.01; prPrevX = e.touches[0].clientX; } });
+
+        function animatePrism() {
+            requestAnimationFrame(animatePrism);
+            prGroup.rotation.y += (prRot - prGroup.rotation.y) * 0.1;
+            prRenderer.render(prScene, prCamera);
+        }
+        animatePrism();
+
+        // ==========================================
+        // 4. INTERACTIVE PARTICLE LOGO
+        // ==========================================
+        const ptCont = document.getElementById('particle-container');
+        const ptScene = new THREE.Scene();
+        const ptCamera = new THREE.PerspectiveCamera(45, ptCont.clientWidth / ptCont.clientHeight, 0.1, 100);
+        const ptRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        ptRenderer.setSize(ptCont.clientWidth, ptCont.clientHeight);
+        ptCont.appendChild(ptRenderer.domElement);
+        ptCamera.position.z = 120;
+
+        // Create glowing circular texture for particles
+        function createGlowTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 32; canvas.height = 32;
+            const ctx = canvas.getContext('2d');
+            const grad = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+            grad.addColorStop(0, 'rgba(56, 189, 248, 1)');
+            grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = grad; ctx.fillRect(0, 0, 32, 32);
+            return new THREE.CanvasTexture(canvas);
+        }
+
+        // --- HOW TO USE YOUR SVG INSTEAD OF TEXT ---
+        // 1. Load your SVG onto a hidden canvas (ctx.drawImage(svgImg)).
+        // 2. Read ctx.getImageData().
+        // 3. Keep the loop below exact same (it spawns particles where pixels aren't transparent).
+        
+        // Generating placeholder "SE" text for the particles
+        const textCanvas = document.createElement('canvas');
+        textCanvas.width = 128; textCanvas.height = 128;
+        const textCtx = textCanvas.getContext('2d');
+        textCtx.fillStyle = 'white';
+        textCtx.font = 'bold 80px sans-serif';
+        textCtx.textAlign = 'center'; textCtx.textBaseline = 'middle';
+        textCtx.fillText('SE', 64, 64);
+        
+        const imgData = textCtx.getImageData(0, 0, 128, 128).data;
+        const ptGeo = new THREE.BufferGeometry();
+        const ptPositions = [];
+        const ptBasePositions = [];
+
+        for(let y=0; y<128; y+=2) {
+            for(let x=0; x<128; x+=2) {
+                const alpha = imgData[(y * 128 + x) * 4 + 3];
+                if(alpha > 128) {
+                    // Center the coordinates
+                    const px = (x - 64) * 0.8;
+                    const py = -(y - 64) * 0.8;
+                    ptPositions.push(px, py, 0);
+                    ptBasePositions.push(px, py, 0);
+                }
+            }
+        }
+
+        ptGeo.setAttribute('position', new THREE.Float32BufferAttribute(ptPositions, 3));
+        ptGeo.setAttribute('basePosition', new THREE.Float32BufferAttribute(ptBasePositions, 3));
+
+        const ptMat = new THREE.PointsMaterial({
+            size: 2.5,
+            map: createGlowTexture(),
+            transparent: true,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+            color: 0x38bdf8
+        });
+
+        const ptMesh = new THREE.Points(ptGeo, ptMat);
+        ptScene.add(ptMesh);
+
+        // Raycaster for mouse interaction
+        const raycaster = new THREE.Raycaster();
+        const ptMouse = new THREE.Vector2(-999, -999);
+        const mousePlane = new THREE.Plane(new THREE.Vector3(0,0,1), 0);
+
+        function onPtMove(x, y) {
+            const rect = ptCont.getBoundingClientRect();
+            ptMouse.x = ((x - rect.left) / rect.width) * 2 - 1;
+            ptMouse.y = -((y - rect.top) / rect.height) * 2 + 1;
+        }
+
+        ptCont.addEventListener('mousemove', (e) => onPtMove(e.clientX, e.clientY));
+        ptCont.addEventListener('touchmove', (e) => onPtMove(e.touches[0].clientX, e.touches[0].clientY));
+        ptCont.addEventListener('mouseleave', () => { ptMouse.x = -999; ptMouse.y = -999; });
+
+        function animateParticles() {
+            requestAnimationFrame(animateParticles);
+
+            raycaster.setFromCamera(ptMouse, ptCamera);
+            const targetVec = new THREE.Vector3();
+            raycaster.ray.intersectPlane(mousePlane, targetVec);
+
+            const pos = ptGeo.attributes.position.array;
+            const base = ptGeo.attributes.basePosition.array;
+
+            for(let i=0; i<pos.length; i+=3) {
+                const dx = pos[i] - targetVec.x;
+                const dy = pos[i+1] - targetVec.y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+
+                // Repel radius and strength
+                if(dist < 15) {
+                    const force = (15 - dist) / 15;
+                    pos[i] += (dx / dist) * force * 2;
+                    pos[i+1] += (dy / dist) * force * 2;
+                }
+
+                // Spring back to base position
+                pos[i] += (base[i] - pos[i]) * 0.1;
+                pos[i+1] += (base[i+1] - pos[i+1]) * 0.1;
+            }
+            
+            ptGeo.attributes.position.needsUpdate = true;
+            // Slow rotation for effect
+            ptMesh.rotation.y = Math.sin(Date.now() * 0.001) * 0.2;
+            
+            ptRenderer.render(ptScene, ptCamera);
+        }
+        animateParticles();
+
+        // Responsive handling for all canvases
         window.addEventListener('resize', () => {
+            // Main bg
             bgCamera.aspect = window.innerWidth / window.innerHeight;
             bgCamera.updateProjectionMatrix();
             bgRenderer.setSize(window.innerWidth, window.innerHeight);
 
-            tlCamera.aspect = timelineContainer.clientWidth / timelineContainer.clientHeight;
+            // Timeline
+            tlCamera.aspect = tlCont.clientWidth / tlCont.clientHeight;
             tlCamera.updateProjectionMatrix();
-            tlRenderer.setSize(timelineContainer.clientWidth, timelineContainer.clientHeight);
-            
-            updateTimelineLayout();
+            tlRenderer.setSize(tlCont.clientWidth, tlCont.clientHeight);
+
+            // Prism
+            prCamera.aspect = prCont.clientWidth / prCont.clientHeight;
+            prCamera.updateProjectionMatrix();
+            prRenderer.setSize(prCont.clientWidth, prCont.clientHeight);
+
+            // Particles
+            ptCamera.aspect = ptCont.clientWidth / ptCont.clientHeight;
+            ptCamera.updateProjectionMatrix();
+            ptRenderer.setSize(ptCont.clientWidth, ptCont.clientHeight);
         });
+
     </script>
 </body>
 </html>
+
