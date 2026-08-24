@@ -335,10 +335,10 @@
             const geo = new THREE.PlaneGeometry(3, 3);
             
             // Load your equipment photos here!
-            // const mat = new THREE.MeshBasicMaterial({ map: texLoader.load(`assets/images/equip${i+1}.jpg`), side: THREE.DoubleSide });
+            const mat = new THREE.MeshBasicMaterial({ map: texLoader.load(`assets/images/equip${i+1}.jpg`), side: THREE.DoubleSide });
             
             // Fallback solid color material for demo
-            const mat = new THREE.MeshBasicMaterial({ color: colors[i], side: THREE.DoubleSide, wireframe: false });
+            // const mat = new THREE.MeshBasicMaterial({ color: colors[i], side: THREE.DoubleSide, wireframe: false });
             
             const mesh = new THREE.Mesh(geo, mat);
             // Math for equilateral triangle placement
