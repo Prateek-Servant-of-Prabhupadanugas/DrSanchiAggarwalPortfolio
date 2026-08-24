@@ -38,12 +38,6 @@
         .glow-text {
             text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
         }
-
-        /* CSS for 3D Flipping Card */
-        .perspective-1000 { perspective: 1000px; }
-        .transform-style-3d { transform-style: preserve-3d; }
-        .backface-hidden { backface-visibility: hidden; }
-        .rotate-y-180 { transform: rotateY(180deg); }
     </style>
 </head>
 <body class="relative">
@@ -83,7 +77,6 @@
                     </span>
                 </h1>
                 
-                <!-- Expanded Bio Description -->
                 <div class="text-gray-300 text-base leading-relaxed space-y-4 glass-card p-6 rounded-2xl border-cyan-500/20">
                     <p>
                         <strong class="text-cyan-400">Dr. Sanchi Agrawal</strong> is a distinguished dentist and endodontist specializing in conservative dentistry and microscopic endodontics. She completed her BDS at CSMSS Dental College, Aurangabad, followed by an internship at the prestigious Government Dental College, Mumbai.
@@ -95,9 +88,23 @@
                         Recognized with the <strong class="text-white">Young Achievers Award from IACDE</strong> and listed among the <strong class="text-cyan-400">Top 10 Endodontists in India</strong>, she advanced her expertise in Microscopic Endodontics, Smile Designing, and Implantology. At <strong class="text-white">The Smile Edit</strong>, she treats every patient's smile as a unique work of art.
                     </p>
                 </div>
+
+                <div class="grid grid-cols-3 gap-3 md:gap-4 pt-2">
+                    <div class="glass-card p-3 md:p-4 rounded-2xl text-center border-cyan-500/20">
+                        <h3 class="text-xl md:text-3xl font-extrabold text-cyan-400">Top 10</h3>
+                        <p class="text-[10px] md:text-xs text-gray-400 uppercase tracking-wider mt-1">Endodontist in India</p>
+                    </div>
+                    <div class="glass-card p-3 md:p-4 rounded-2xl text-center border-cyan-500/20">
+                        <h3 class="text-xl md:text-3xl font-extrabold text-cyan-400">IACDE</h3>
+                        <p class="text-[10px] md:text-xs text-gray-400 uppercase tracking-wider mt-1">Young Achiever Award</p>
+                    </div>
+                    <div class="glass-card p-3 md:p-4 rounded-2xl text-center border-cyan-500/20">
+                        <h3 class="text-xl md:text-3xl font-extrabold text-cyan-400">MDS Topper</h3>
+                        <p class="text-[10px] md:text-xs text-gray-400 uppercase tracking-wider mt-1">ITS Ghaziabad</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Doctor Profile Image Box -->
             <div class="md:w-1/2 relative group w-full">
                 <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
                 <div class="relative glass-card p-4 rounded-3xl overflow-hidden border-cyan-500/30">
@@ -120,7 +127,6 @@
                 </p>
             </div>
 
-            <!-- Canvas Container for 3D Experience Carousel -->
             <div class="relative glass-card rounded-3xl p-2 md:p-4 border-cyan-500/20 overflow-hidden">
                 <div class="absolute top-4 left-4 z-20 text-[11px] md:text-xs text-cyan-400 bg-slate-900/80 px-3 py-1.5 rounded-full border border-cyan-500/30">
                     <i class="fa-solid fa-hand-pointer mr-2"></i> Drag or Swipe horizontally
@@ -129,69 +135,80 @@
             </div>
         </section>
 
-        <!-- The Smile Edit Practice Showcase (REDESIGNED) -->
-        <section id="practice" class="py-20 px-4 md:px-6 max-w-7xl mx-auto">
-            <div class="text-center space-y-4 mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white">The Smile Edit</h2>
+        <!-- SINGLE STYLISH CAROUSEL: The Smile Edit Practice Showcase -->
+        <section id="practice" class="py-20 px-4 md:px-6 max-w-5xl mx-auto">
+            <div class="text-center space-y-4 mb-10">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">The Smile Edit Gallery</h2>
                 <p class="text-gray-400 max-w-xl mx-auto text-sm md:text-base">
-                    Combining clinical micro-precision with aesthetic artistry to deliver personalized dental treatment.
+                    Take a visual tour inside our state-of-the-art studio, advanced microscopic equipment, and aesthetic operatories.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                
-                <!-- CARD 1: 3D Flipping Photo -->
-                <div class="glass-card rounded-2xl border-cyan-500/20 perspective-1000 group">
-                    <div class="relative h-64 md:h-72 w-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180 cursor-pointer">
-                        <!-- Front: Clinic External -->
-                        <div class="absolute inset-0 backface-hidden rounded-t-2xl overflow-hidden bg-slate-800">
-                            <!-- Replace with actual external clinic photo -->
-                            <img src="assets/images/Screenshot_20260824_122643_WhatsApp.jpg" alt="Clinic Exterior" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 flex items-center justify-center bg-slate-900/50">
-                                <span class="bg-black/60 text-white px-3 py-1 rounded-full text-xs border border-white/20"><i class="fa-solid fa-rotate mr-1"></i> Hover/Tap to Flip</span>
-                            </div>
-                        </div>
-                        <!-- Back: Smile Edit Logo -->
-                        <div class="absolute inset-0 backface-hidden rotate-y-180 rounded-t-2xl bg-slate-900 flex items-center justify-center border border-cyan-500/30">
-                            <!-- Replace with actual Smile Edit Logo -->
-                            <img src="assets/images/smile-edit-logo.png" alt="The Smile Edit Logo" class="w-2/3 object-contain">
-                            <p class="absolute bottom-4 text-cyan-400 text-xs font-semibold tracking-widest">THE SMILE EDIT</p>
+            <!-- Single Carousel Frame -->
+            <div class="glass-card rounded-3xl p-3 md:p-5 border-cyan-500/30 shadow-2xl relative">
+                <!-- Main Image Container -->
+                <div id="carousel-viewport" class="relative h-[340px] sm:h-[420px] md:h-[500px] w-full rounded-2xl overflow-hidden cursor-grab active:cursor-grabbing select-none">
+                    
+                    <!-- Slide 1: Studio Exterior -->
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-100 z-10">
+                        <img src="assets/images/clinic-external.jpg" alt="The Smile Edit Studio Exterior" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 glass-card p-4 md:p-6 rounded-2xl border-cyan-500/20 max-w-xl">
+                            <span class="text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-1 block">Studio Atmosphere</span>
+                            <h3 class="text-lg md:text-2xl font-bold text-white">The Smile Edit Entrance</h3>
+                            <p class="text-xs md:text-sm text-gray-300 mt-1">A tranquil, modern environment engineered to alleviate dental anxiety from the moment you step in.</p>
                         </div>
                     </div>
-                    <div class="p-6 relative z-10 bg-slate-900/50 rounded-b-2xl">
-                        <h3 class="text-lg md:text-xl font-bold text-white mb-2">Our Studio</h3>
-                        <p class="text-xs md:text-sm text-gray-400">Step into a modern, calming environment engineered for anxiety-free dentistry.</p>
+
+                    <!-- Slide 2: Advanced Equipment -->
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 z-0">
+                        <img src="assets/images/clinic-equipment.jpg" alt="Microscopic & Digital Equipment" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 glass-card p-4 md:p-6 rounded-2xl border-cyan-500/20 max-w-xl">
+                            <span class="text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-1 block">Clinical Technology</span>
+                            <h3 class="text-lg md:text-2xl font-bold text-white">Microscopic & 3D Diagnostics</h3>
+                            <p class="text-xs md:text-sm text-gray-300 mt-1">Equipped with dental operating microscopes, digital scanners, and international sterilization standards.</p>
+                        </div>
                     </div>
+
+                    <!-- Slide 3: Operatory setup -->
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 z-0">
+                        <img src="assets/images/clinic-operatory.jpg" alt="Painless Operatory Setup" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 glass-card p-4 md:p-6 rounded-2xl border-cyan-500/20 max-w-xl">
+                            <span class="text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-1 block">Precision Treatments</span>
+                            <h3 class="text-lg md:text-2xl font-bold text-white">Ergonomic Operatory Suite</h3>
+                            <p class="text-xs md:text-sm text-gray-300 mt-1">Ergonomically designed treatment suites optimized for patient comfort and conservative dental care.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Smile Edit Logo / Branding -->
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 z-0 bg-slate-950">
+                        <img src="assets/images/smile-edit-logo.png" alt="The Smile Edit Brand" class="w-full h-full object-contain p-12">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 glass-card p-4 md:p-6 rounded-2xl border-cyan-500/20 max-w-xl">
+                            <span class="text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-1 block">Our Philosophy</span>
+                            <h3 class="text-lg md:text-2xl font-bold text-white">The Smile Edit Philosophy</h3>
+                            <p class="text-xs md:text-sm text-gray-300 mt-1">Approaching every dental procedure as a bespoke blend of micro-precision and natural aesthetics.</p>
+                        </div>
+                    </div>
+
+                    <!-- Side Navigation Arrow Buttons (Desktop & Touch) -->
+                    <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full glass-card border border-cyan-500/30 text-cyan-400 hover:text-white hover:bg-cyan-500/20 flex items-center justify-center transition-all">
+                        <i class="fa-solid fa-chevron-left text-sm md:text-base"></i>
+                    </button>
+                    <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full glass-card border border-cyan-500/30 text-cyan-400 hover:text-white hover:bg-cyan-500/20 flex items-center justify-center transition-all">
+                        <i class="fa-solid fa-chevron-right text-sm md:text-base"></i>
+                    </button>
                 </div>
 
-                <!-- CARD 2: 3D Triangular Prism Equipment Carousel -->
-                <div class="glass-card rounded-2xl border-cyan-500/20">
-                    <div id="prism-container" class="relative h-64 md:h-72 w-full rounded-t-2xl overflow-hidden bg-slate-950 cursor-grab active:cursor-grabbing">
-                        <div class="absolute top-3 left-3 z-20 text-[10px] text-cyan-400 bg-black/60 px-2 py-1 rounded-full border border-cyan-500/30">
-                            <i class="fa-solid fa-arrows-left-right mr-1"></i> Drag to rotate
-                        </div>
-                        <!-- Canvas injected here -->
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-white mb-2">Advanced Equipment</h3>
-                        <p class="text-xs md:text-sm text-gray-400">Equipped with highly precise microscopic dentistry tools and digital intraoral scanners.</p>
-                    </div>
+                <!-- RECTANGULAR NAVIGATION BARS DIRECTLY BELOW -->
+                <div class="flex justify-center items-center gap-2 md:gap-3 mt-5 mb-2" id="rectangular-nav-bars">
+                    <button class="nav-bar h-2.5 rounded-full transition-all duration-500 bg-cyan-400 w-10 md:w-14 shadow-lg shadow-cyan-500/50" onclick="setSlide(0)" aria-label="Slide 1"></button>
+                    <button class="nav-bar h-2.5 rounded-full transition-all duration-500 bg-slate-700/80 hover:bg-slate-500 w-5 md:w-7" onclick="setSlide(1)" aria-label="Slide 2"></button>
+                    <button class="nav-bar h-2.5 rounded-full transition-all duration-500 bg-slate-700/80 hover:bg-slate-500 w-5 md:w-7" onclick="setSlide(2)" aria-label="Slide 3"></button>
+                    <button class="nav-bar h-2.5 rounded-full transition-all duration-500 bg-slate-700/80 hover:bg-slate-500 w-5 md:w-7" onclick="setSlide(3)" aria-label="Slide 4"></button>
                 </div>
-
-                <!-- CARD 3: 3D Interactive Particle Logo -->
-                <div class="glass-card rounded-2xl border-cyan-500/20">
-                    <div id="particle-container" class="relative h-64 md:h-72 w-full rounded-t-2xl overflow-hidden bg-slate-950 cursor-crosshair">
-                        <div class="absolute top-3 left-3 z-20 text-[10px] text-cyan-400 bg-black/60 px-2 py-1 rounded-full border border-cyan-500/30">
-                            <i class="fa-solid fa-hand-sparkles mr-1"></i> Touch / Hover to disperse
-                        </div>
-                        <!-- Canvas injected here -->
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-white mb-2">Art & Science</h3>
-                        <p class="text-xs md:text-sm text-gray-400">Where clinical precision meets the aesthetic artistry of bespoke smile designing.</p>
-                    </div>
-                </div>
-
             </div>
         </section>
 
@@ -214,7 +231,7 @@
 
     </div>
 
-    <!-- Main Three.js Scripts -->
+    <!-- Scripts section -->
     <script>
         // ==========================================
         // 1. MAIN BACKGROUND 3D SCENE
@@ -313,203 +330,103 @@
         animateTl();
 
         // ==========================================
-        // 3. TRIANGULAR PRISM (Equipments)
+        // 3. CONTINUOUS CAROUSEL LOGIC
         // ==========================================
-        const prCont = document.getElementById('prism-container');
-        const prScene = new THREE.Scene();
-        const prCamera = new THREE.PerspectiveCamera(45, prCont.clientWidth / prCont.clientHeight, 0.1, 100);
-        const prRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        prRenderer.setSize(prCont.clientWidth, prCont.clientHeight);
-        prCont.appendChild(prRenderer.domElement);
+        const slides = document.querySelectorAll('.carousel-slide');
+        const navBars = document.querySelectorAll('.nav-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const viewport = document.getElementById('carousel-viewport');
 
-        const prGroup = new THREE.Group();
-        prScene.add(prGroup);
-        prCamera.position.z = 4.5; // distance of camera
+        let currentSlide = 0;
+        let slideInterval = null;
 
-        // Fallback colors if images aren't found
-        const colors = [0x1e293b, 0x334155, 0x0f172a]; 
-        const texLoader = new THREE.TextureLoader();
-        
-        // Setup 3 faces for triangle
-        for(let i=0; i<3; i++) {
-            const geo = new THREE.PlaneGeometry(3, 3);
-            
-            // Load your equipment photos here!
-            const mat = new THREE.MeshBasicMaterial({ map: texLoader.load(`assets/images/equip${i+1}.jpg`), side: THREE.DoubleSide });
-            
-            // Fallback solid color material for demo
-            // const mat = new THREE.MeshBasicMaterial({ color: colors[i], side: THREE.DoubleSide, wireframe: false });
-            
-            const mesh = new THREE.Mesh(geo, mat);
-            // Math for equilateral triangle placement
-            const angle = (i * 2 * Math.PI) / 3;
-            const radius = (3 / 2) / Math.tan(Math.PI / 3); 
-            
-            mesh.position.set(Math.sin(angle) * radius, 0, Math.cos(angle) * radius);
-            mesh.rotation.y = angle;
-            prGroup.add(mesh);
-        }
-
-        let prRot = 0, prDragging = false, prPrevX = 0;
-        prCont.addEventListener('mousedown', (e) => { prDragging = true; prPrevX = e.clientX; });
-        window.addEventListener('mouseup', () => prDragging = false);
-        prCont.addEventListener('mousemove', (e) => { if(prDragging) { prRot += (e.clientX - prPrevX)*0.01; prPrevX = e.clientX; } });
-
-        prCont.addEventListener('touchstart', (e) => { prDragging = true; prPrevX = e.touches[0].clientX; });
-        window.addEventListener('touchend', () => prDragging = false);
-        prCont.addEventListener('touchmove', (e) => { if(prDragging) { prRot += (e.touches[0].clientX - prPrevX)*0.01; prPrevX = e.touches[0].clientX; } });
-
-        function animatePrism() {
-            requestAnimationFrame(animatePrism);
-            prGroup.rotation.y += (prRot - prGroup.rotation.y) * 0.1;
-            prRenderer.render(prScene, prCamera);
-        }
-        animatePrism();
-
-        // ==========================================
-        // 4. INTERACTIVE PARTICLE LOGO
-        // ==========================================
-        const ptCont = document.getElementById('particle-container');
-        const ptScene = new THREE.Scene();
-        const ptCamera = new THREE.PerspectiveCamera(45, ptCont.clientWidth / ptCont.clientHeight, 0.1, 100);
-        const ptRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        ptRenderer.setSize(ptCont.clientWidth, ptCont.clientHeight);
-        ptCont.appendChild(ptRenderer.domElement);
-        ptCamera.position.z = 120;
-
-        // Create glowing circular texture for particles
-        function createGlowTexture() {
-            const canvas = document.createElement('canvas');
-            canvas.width = 32; canvas.height = 32;
-            const ctx = canvas.getContext('2d');
-            const grad = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
-            grad.addColorStop(0, 'rgba(56, 189, 248, 1)');
-            grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-            ctx.fillStyle = grad; ctx.fillRect(0, 0, 32, 32);
-            return new THREE.CanvasTexture(canvas);
-        }
-
-        // --- HOW TO USE YOUR SVG INSTEAD OF TEXT ---
-        // 1. Load your SVG onto a hidden canvas (ctx.drawImage(svgImg)).
-        // 2. Read ctx.getImageData().
-        // 3. Keep the loop below exact same (it spawns particles where pixels aren't transparent).
-        
-        // Generating placeholder "SE" text for the particles
-        const textCanvas = document.createElement('canvas');
-        textCanvas.width = 128; textCanvas.height = 128;
-        const textCtx = textCanvas.getContext('2d');
-        textCtx.fillStyle = 'white';
-        textCtx.font = 'bold 80px sans-serif';
-        textCtx.textAlign = 'center'; textCtx.textBaseline = 'middle';
-        textCtx.fillText('SE', 64, 64);
-        
-        const imgData = textCtx.getImageData(0, 0, 128, 128).data;
-        const ptGeo = new THREE.BufferGeometry();
-        const ptPositions = [];
-        const ptBasePositions = [];
-
-        for(let y=0; y<128; y+=2) {
-            for(let x=0; x<128; x+=2) {
-                const alpha = imgData[(y * 128 + x) * 4 + 3];
-                if(alpha > 128) {
-                    // Center the coordinates
-                    const px = (x - 64) * 0.8;
-                    const py = -(y - 64) * 0.8;
-                    ptPositions.push(px, py, 0);
-                    ptBasePositions.push(px, py, 0);
+        function updateSlideUI() {
+            slides.forEach((slide, idx) => {
+                if(idx === currentSlide) {
+                    slide.classList.remove('opacity-0', 'z-0');
+                    slide.classList.add('opacity-100', 'z-10');
+                } else {
+                    slide.classList.remove('opacity-100', 'z-10');
+                    slide.classList.add('opacity-0', 'z-0');
                 }
+            });
+
+            navBars.forEach((bar, idx) => {
+                if(idx === currentSlide) {
+                    bar.className = "nav-bar h-2.5 rounded-full transition-all duration-500 bg-cyan-400 w-10 md:w-14 shadow-lg shadow-cyan-500/50";
+                } else {
+                    bar.className = "nav-bar h-2.5 rounded-full transition-all duration-500 bg-slate-700/80 hover:bg-slate-500 w-5 md:w-7";
+                }
+            });
+        }
+
+        function setSlide(index) {
+            currentSlide = index;
+            updateSlideUI();
+            restartAutoSlide();
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlideUI();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlideUI();
+        }
+
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, 4500);
+        }
+
+        function restartAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+
+        nextBtn.addEventListener('click', () => { nextSlide(); restartAutoSlide(); });
+        prevBtn.addEventListener('click', () => { prevSlide(); restartAutoSlide(); });
+
+        // Touch & Swipe gestures for mobile/tablet navigation
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        viewport.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        viewport.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                nextSlide();
+                restartAutoSlide();
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                prevSlide();
+                restartAutoSlide();
             }
         }
 
-        ptGeo.setAttribute('position', new THREE.Float32BufferAttribute(ptPositions, 3));
-        ptGeo.setAttribute('basePosition', new THREE.Float32BufferAttribute(ptBasePositions, 3));
+        // Initialize auto slide
+        startAutoSlide();
 
-        const ptMat = new THREE.PointsMaterial({
-            size: 2.5,
-            map: createGlowTexture(),
-            transparent: true,
-            blending: THREE.AdditiveBlending,
-            depthWrite: false,
-            color: 0x38bdf8
-        });
-
-        const ptMesh = new THREE.Points(ptGeo, ptMat);
-        ptScene.add(ptMesh);
-
-        // Raycaster for mouse interaction
-        const raycaster = new THREE.Raycaster();
-        const ptMouse = new THREE.Vector2(-999, -999);
-        const mousePlane = new THREE.Plane(new THREE.Vector3(0,0,1), 0);
-
-        function onPtMove(x, y) {
-            const rect = ptCont.getBoundingClientRect();
-            ptMouse.x = ((x - rect.left) / rect.width) * 2 - 1;
-            ptMouse.y = -((y - rect.top) / rect.height) * 2 + 1;
-        }
-
-        ptCont.addEventListener('mousemove', (e) => onPtMove(e.clientX, e.clientY));
-        ptCont.addEventListener('touchmove', (e) => onPtMove(e.touches[0].clientX, e.touches[0].clientY));
-        ptCont.addEventListener('mouseleave', () => { ptMouse.x = -999; ptMouse.y = -999; });
-
-        function animateParticles() {
-            requestAnimationFrame(animateParticles);
-
-            raycaster.setFromCamera(ptMouse, ptCamera);
-            const targetVec = new THREE.Vector3();
-            raycaster.ray.intersectPlane(mousePlane, targetVec);
-
-            const pos = ptGeo.attributes.position.array;
-            const base = ptGeo.attributes.basePosition.array;
-
-            for(let i=0; i<pos.length; i+=3) {
-                const dx = pos[i] - targetVec.x;
-                const dy = pos[i+1] - targetVec.y;
-                const dist = Math.sqrt(dx*dx + dy*dy);
-
-                // Repel radius and strength
-                if(dist < 15) {
-                    const force = (15 - dist) / 15;
-                    pos[i] += (dx / dist) * force * 2;
-                    pos[i+1] += (dy / dist) * force * 2;
-                }
-
-                // Spring back to base position
-                pos[i] += (base[i] - pos[i]) * 0.1;
-                pos[i+1] += (base[i+1] - pos[i+1]) * 0.1;
-            }
-            
-            ptGeo.attributes.position.needsUpdate = true;
-            // Slow rotation for effect
-            ptMesh.rotation.y = Math.sin(Date.now() * 0.001) * 0.2;
-            
-            ptRenderer.render(ptScene, ptCamera);
-        }
-        animateParticles();
-
-        // Responsive handling for all canvases
+        // Responsive handling for Three.js viewports
         window.addEventListener('resize', () => {
-            // Main bg
             bgCamera.aspect = window.innerWidth / window.innerHeight;
             bgCamera.updateProjectionMatrix();
             bgRenderer.setSize(window.innerWidth, window.innerHeight);
 
-            // Timeline
             tlCamera.aspect = tlCont.clientWidth / tlCont.clientHeight;
             tlCamera.updateProjectionMatrix();
             tlRenderer.setSize(tlCont.clientWidth, tlCont.clientHeight);
-
-            // Prism
-            prCamera.aspect = prCont.clientWidth / prCont.clientHeight;
-            prCamera.updateProjectionMatrix();
-            prRenderer.setSize(prCont.clientWidth, prCont.clientHeight);
-
-            // Particles
-            ptCamera.aspect = ptCont.clientWidth / ptCont.clientHeight;
-            ptCamera.updateProjectionMatrix();
-            ptRenderer.setSize(ptCont.clientWidth, ptCont.clientHeight);
         });
-
     </script>
 </body>
 </html>
-
