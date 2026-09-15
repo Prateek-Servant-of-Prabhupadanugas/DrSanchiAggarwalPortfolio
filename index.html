@@ -191,49 +191,55 @@
                 <!-- Carousel Outer Frame -->
                 <div class="glass-card rounded-3xl p-3 md:p-5 border-cyan-500/30 shadow-2xl relative">
                     <!-- Carousel Viewport -->
-                    <div id="carousel-viewport" class="relative h-[360px] sm:h-[440px] md:h-[520px] w-full rounded-2xl overflow-hidden cursor-grab active:cursor-grabbing select-none">
-                        
-                        <!-- Slide 1: Interior Photo 1 -->
-                        <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-100 z-10">
-                            <img src="Assets/Images/IMG-20260819-WA0012(1).jpg" alt="Smile Edit Operatory Suite 1" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 right-6 glass-card p-4 md:p-6 rounded-2xl border-cyan-500/20 max-w-xl">
-                                <span class="text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-1 block">Interior View I</span>
-                                <h3 class="text-lg md:text-2xl font-bold text-white">Microscopic Operatory Desk</h3>
-                                <p class="text-xs md:text-sm text-gray-300 mt-1">Configured for microscopic endodontics, patient comfort, and seamless hygiene.</p>
-                            </div>
-                        </div>
+<div id="carousel-viewport" class="relative h-[360px] sm:h-[440px] md:h-[520px] w-full rounded-2xl overflow-hidden cursor-grab active:cursor-grabbing select-none">
+    
+    <!-- Slide 1: Interior Photo 1 -->
+    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-100 z-10 flex flex-col">
+        <!-- Image Area: flex-1 allows it to take all remaining space above the text -->
+        <div class="flex-1 w-full relative overflow-hidden">
+            <img src="Assets/Images/IMG-20260819-WA0012(1).jpg" alt="Smile Edit Operatory Suite 1" class="w-full h-full object-cover">
+        </div>
+        <!-- Text Area: Sits solidly at the bottom -->
+        <div class="w-full glass-card p-4 md:p-6 border-t border-cyan-500/20 z-20">
+            <span class="text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-1 block">Interior View I</span>
+            <h3 class="text-lg md:text-2xl font-bold text-white">Microscopic Operatory Desk</h3>
+            <p class="text-xs md:text-sm text-gray-300 mt-1">Configured for microscopic endodontics, patient comfort, and seamless hygiene.</p>
+        </div>
+    </div>
 
-                        <!-- Slide 2: Interior Photo 2 -->
-                        <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 z-0">
-                            <img src="Assets/Images/IMG-20260819-WA0015.jpg" alt="Smile Edit Operatory Suite 2" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 right-6 glass-card p-4 md:p-6 rounded-2xl border-cyan-500/20 max-w-xl">
-                                <span class="text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-1 block">Interior View II</span>
-                                <h3 class="text-lg md:text-2xl font-bold text-white">Ergonomic Dental Chair Setup</h3>
-                                <p class="text-xs md:text-sm text-gray-300 mt-1">Custom lighting and soothing architectural ceiling designed to reduce anxiety during root canal procedures.</p>
-                            </div>
-                        </div>
+    <!-- Slide 2: Interior Photo 2 -->
+    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 z-0 flex flex-col">
+        <div class="flex-1 w-full relative overflow-hidden">
+            <img src="Assets/Images/IMG-20260819-WA0015.jpg" alt="Smile Edit Operatory Suite 2" class="w-full h-full object-cover">
+        </div>
+        <div class="w-full glass-card p-4 md:p-6 border-t border-cyan-500/20 z-20">
+            <span class="text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-1 block">Interior View II</span>
+            <h3 class="text-lg md:text-2xl font-bold text-white">Ergonomic Dental Chair Setup</h3>
+            <p class="text-xs md:text-sm text-gray-300 mt-1">Custom lighting and soothing architectural ceiling designed to reduce anxiety during root canal procedures.</p>
+        </div>
+    </div>
 
-                        <!-- Slide 3: Interior Photo 3 -->
-                        <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 z-0">
-                            <img src="Assets/Images/IMG-20260819-WA0017.jpg" alt="Smile Edit Operatory Suite 3" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 right-6 glass-card p-4 md:p-6 rounded-2xl border-cyan-500/20 max-w-xl">
-                                <span class="text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-1 block">Interior View III</span>
-                                <h3 class="text-lg md:text-2xl font-bold text-white">Private Consultation Suite</h3>
-                                <p class="text-xs md:text-sm text-gray-300 mt-1">Dedicated space for digital smile designing previews and personalized treatment planning.</p>
-                            </div>
-                        </div>
+    <!-- Slide 3: Interior Photo 3 -->
+    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 z-0 flex flex-col">
+        <div class="flex-1 w-full relative overflow-hidden">
+            <img src="Assets/Images/IMG-20260819-WA0017.jpg" alt="Smile Edit Operatory Suite 3" class="w-full h-full object-cover">
+        </div>
+        <div class="w-full glass-card p-4 md:p-6 border-t border-cyan-500/20 z-20">
+            <span class="text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-1 block">Interior View III</span>
+            <h3 class="text-lg md:text-2xl font-bold text-white">Private Consultation Suite</h3>
+            <p class="text-xs md:text-sm text-gray-300 mt-1">Dedicated space for digital smile designing previews and personalized treatment planning.</p>
+        </div>
+    </div>
 
-                        <!-- Navigation Arrow Buttons -->
-                        <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full glass-card border border-cyan-500/30 text-cyan-400 hover:text-white hover:bg-cyan-500/20 flex items-center justify-center transition-all">
-                            <i class="fa-solid fa-chevron-left text-sm md:text-base"></i>
-                        </button>
-                        <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full glass-card border border-cyan-500/30 text-cyan-400 hover:text-white hover:bg-cyan-500/20 flex items-center justify-center transition-all">
-                            <i class="fa-solid fa-chevron-right text-sm md:text-base"></i>
-                        </button>
-                    </div>
+    <!-- Navigation Arrow Buttons -->
+    <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full glass-card border border-cyan-500/30 text-cyan-400 hover:text-white hover:bg-cyan-500/20 flex items-center justify-center transition-all shadow-lg">
+        <i class="fa-solid fa-chevron-left text-sm md:text-base"></i>
+    </button>
+    <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full glass-card border border-cyan-500/30 text-cyan-400 hover:text-white hover:bg-cyan-500/20 flex items-center justify-center transition-all shadow-lg">
+        <i class="fa-solid fa-chevron-right text-sm md:text-base"></i>
+    </button>
+</div>
+
 
                     <!-- RECTANGULAR NAVIGATION BARS DIRECTLY BELOW -->
                     <div class="flex justify-center items-center gap-2 md:gap-3 mt-5 mb-2" id="rectangular-nav-bars">
